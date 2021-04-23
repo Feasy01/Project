@@ -1,0 +1,340 @@
+{%extends "home.html"%}
+
+{%block head%}
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+     *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  background-color:#aa82d9;
+  transition: all 0.3s ease;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+}
+.wrapper{
+  width: 60%;
+  height: 60%;
+  border-radius: 10px;
+  position:relative;
+
+}
+.big-container-1{
+display:flex;
+justify-content: space-around;
+flex-wrap: wrap;
+align-items:center;
+position:absolute;
+width:100%;
+height:100%;
+z-index: 1;
+
+}
+.big-container-2{
+position:absolute;
+width:100%;
+height:100%;
+z-index: 2;
+background-color: #C0C0C0;
+grid-template-columns: 0.3fr 2.4fr 0.3fr;
+grid-template-rows: 0.3fr 1.7fr 1fr;
+gap: 10px 10px;
+border-radius:15px;
+display:none;
+
+}
+.small-container
+{
+BACKGROUND-COLOR:#401063;
+color: white;
+position: relative;
+margin:10px;
+padding:1%;
+width:46%;
+height: 46%;
+border-radius:15px;
+border: 1px solid grey;
+display:flex;
+transition: all 0.5s ease;
+
+box-shadow:  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+flex-wrap:wrap;
+
+}
+.live, .account , .ticket
+{
+background-color:#b80062;
+
+}
+.topper
+{
+font-size: 2.5vh;
+font-weight: 600;
+display:flex;
+justify-content: space-around;
+align-items:center;
+position: relative;
+width:100%;
+height:20%;
+padding-top:10px;
+
+}
+.content
+{
+display:flex;
+justify-content:center;
+position: relative;
+width:100%;
+height:80%;
+
+}
+.content img
+{
+max-width:400px;
+max-height:400px;
+
+}
+
+
+.settings:hover
+{width:48%;
+height:48%;
+background-image: radial-gradient(circle, #823eb3, #71329e, #60278a, #501b76, #401063);
+
+}
+.ticket:hover
+{width:48%;
+height:48%;
+background-image: radial-gradient(circle, #d65f9f, #cf4e90, #c83c81, #c02771, #b80062);
+}
+.live:hover
+{width:48%;
+height:48%;
+background-image: radial-gradient(circle, #d65f9f, #cf4e90, #c83c81, #c02771, #b80062);
+}
+.account:hover
+{
+width:48%;
+height:48%;
+background-image: radial-gradient(circle, #d65f9f, #cf4e90, #c83c81, #c02771, #b80062);
+
+}
+
+
+.small-container img:hover
+{
+cursor:pointer;
+
+}
+.back{
+display:flex;
+justify-content:center;
+align-items:center;
+
+
+}
+.back:hover
+{
+cursor:pointer;
+}
+.square
+{
+width:60%;
+height:90%;
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:20px;
+}
+.square img
+{
+max-width:250px;
+max-height:250px;
+
+}
+#map
+{
+border-radius:15px;
+
+}
+
+.purple{
+  border: 2px solid $bg;
+  color: Black;
+  padding-left:30px;
+  padding-right:30px;
+  padding-top:10px
+  padding-bottom:10px;
+  transition: all 0.6s ease-in-out;
+  font-size:18px;
+  display: none;}
+
+.purple:hover {
+    background-color: #512DA8;
+    padding-left:40px;
+    padding-right:40px;
+    font-weight:400;
+    color:white;
+    transition: all 0.6s ease-in-out;
+    cursor:pointer;
+  }
+.stop
+{
+display:flex;
+align-items:center;
+justify-content:center;
+background-color:#C0C0C0;
+width:100%;
+font-size:18px;
+font-weight:500;
+margin:5px;
+border: 1px solid black;
+border-radius:15px;
+box-shadow: 0 1px 1px rgba(0,0,0,0.25),
+            0 2px 2px rgba(0,0,0,0.20),
+            0 4px 4px rgba(0,0,0,0.15),
+            0 8px 8px rgba(0,0,0,0.10),
+            0 16px 16px rgba(0,0,0,0.05);
+}
+.stop:hover
+{
+cursor:pointer;
+}
+.timetable
+{
+display:none;
+z-index:2;
+position:absolute;
+width:100%;
+height:100%;
+border-radius:15px;
+background-color:#C0C0C0;
+grid-template-columns: 0.4fr 3.1fr 0.4fr;
+grid-template-rows: 0.3fr 2.6fr 0.1fr;
+gap: 10px 10px;
+border: 1px solid black;
+box-shadow: 0 1px 1px rgba(0,0,0,0.25),
+            0 2px 2px rgba(0,0,0,0.20),
+            0 4px 4px rgba(0,0,0,0.15),
+            0 8px 8px rgba(0,0,0,0.10),
+            0 16px 16px rgba(0,0,0,0.05);
+}
+.timetable-img{margin-left:25%;}
+</style>
+
+{%endblock%}
+
+{%block body%}
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+   return
+  }
+}
+
+function showPosition(position) {
+  var coordinates={
+  lat:position.coords.latitude,
+  lng:position.coords.longitude
+  }
+  window.options =
+  {
+  zoom:15,
+  center:coordinates
+  }
+}
+getLocation();</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDZy4PACKEldzYgbUxuSI-2sAMDaPmlgc
+&callback=initMap"></script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type=text/javascript src="{{url_for('static', filename='script.js')}}"></script>
+
+
+<div class="wrapper">
+    <div class="big-container-1">
+        <div class="small-container ticket">
+
+            <div class="content" id="ticket"><img src="/static/ticket.png"></div>
+            <div class="topper">Tickets</div>
+        </div>
+        <div class="small-container live">
+            <div class="content" id="live"><img src="/static/map.png">
+            </div>
+        <div class="topper">Live Map</div></div>
+        <div class="small-container settings">
+            <div class="content"  id="settings"><img src="/static/account.png"> </div>
+        <div class="topper">Occupancy</div></div>
+        <div class="small-container account">
+            <div class="content"  id="timetable"><img src="/static/ticket.png"> </div>
+        <div class="topper">Timetable</div></div>
+
+
+    </div>
+    <div class="big-container-2" id="first">
+        <div class="back" style="grid-area: 1/1; background-color:parent;">BACK</div>
+        <div style="grid-area: 2/2; background-color:parent; display:flex; align-items:center; justify-content:center;">
+            <div class="square" id="qrCode">
+            </div>
+        </div>
+        <div style="grid-area: 3/2; background-color:parent; display:flex; align-items:center; justify-content:center;" class="low">
+             <button class="skewBtn purple" id="buyTicket">Buy tickets</button>
+        </div>
+
+
+    </div>
+    <div class="big-container-2" id="second">
+        <div id="map" style="position:relative; width:100%; height:100%; background-color:red; z-index:1;"></div>
+        <div class="back" style="position:absolute; top:0px; left:0; width:90px; height:50px; background-color:white; z-index:2;">back</div>
+    </div>
+     <div class="big-container-2" id="third">
+        <div class="back" style="grid-area: 1/1; background-color:parent;">BACK</div>
+        <div style="grid-are: 1/2; background-color:#C0C0C0; display: flex; justify-content:center; align-items:center; font-weight:600; FONT-SIZE:24PX;"><div>Tram occupancy</div></div>
+        <div style="grid-row: 2 / 4;grid-column:2; position:relative; background-color:parent; display:inline-flex; align-items:stretch; justify-content:center; flex-wrap:wrap; background-color:#C0C0C0; margin-bottom:10px;">
+
+            <div class ="stop" style=""><> Tram 1 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;        25/25</div>
+            <div class ="stop" style=""><> Tram 2  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;     21/25</div>
+            <div class ="stop" style=""><> Tram 3  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       11/25</div>
+            <div class ="stop" style=""><> Tram 4  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;        9/25</div>
+        </div>
+        </div>
+    <div class="big-container-2" id="fourth">
+        <div class="back" style="grid-area: 1/1; background-color:parent;">BACK</div>
+        <div style="grid-are: 1/2; background-color:#C0C0C0; display: flex; justify-content:center; align-items:center; font-weight:600; FONT-SIZE:24PX;"><div>SELECT A STOP</div></div>
+        <div style="grid-row: 2 / 4;grid-column:2; position:relative; background-color:parent; display:inline-flex; align-items:stretch; justify-content:center; flex-wrap:wrap; background-color:#C0C0C0; margin-bottom:10px;">
+
+            <div class ="stop" id="Stop1" style=""><>Hollywell park</div>
+            <div class ="stop"id="Stop2" style=""><>West Park</div>
+            <div class ="stop" id="Stop3" style=""><>Wolfson School</div>
+            <div class ="stop"id="Stop4" style=""><>Pilkington</div>
+            <div class ="stop" id="Stop5" style=""><>Village Park</div>
+            <div class ="stop" id="Stop6" style=""><>Computer Science</div>
+            <div class="timetable" id="timetable-roll"><div class="back"style="grid-area: 1/1; background-color:parent;">BACK</div>
+                <div class="timetable-img" style="grid-row:2 ; grid-column:1 / 4; background-color:#C0C0C0;"> <img id="myImage" src="/static/timetable1.png"></div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+{%endblock%}
